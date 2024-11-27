@@ -1,15 +1,12 @@
 import random
 words = ["python", "eugene", "computer", "hangman", "challenge"]
-#where you can choose a random word
 secret_word = random.choice(words)
 wrong_guesses = []
 guesses = []
-#used to create a list of dashes for the word
 current_display = ["-" for _ in secret_word]
 
-# hint 
 hint = secret_word[0] 
-current_display[0] = hint  # to update the current hint
+current_display[0] = hint  
 
 
 
@@ -31,9 +28,8 @@ while len(wrong_guesses) < MAX_WRONG_GUESSES and "-" in current_display:
         continue
 
     guesses.append(guess)
-#cheking if guess is there
     if guess in secret_word:
-        # Updating the current display with the guessed letter
+        
         for i, letter in enumerate(secret_word):
             if letter == guess:
                 current_display[i] = guess
@@ -41,7 +37,6 @@ while len(wrong_guesses) < MAX_WRONG_GUESSES and "-" in current_display:
         wrong_guesses.append(guess)
         print(f"Incorrect guess. You have {MAX_WRONG_GUESSES - len(wrong_guesses)} guesses left.")
 
-# the game is over
 if len(wrong_guesses) == MAX_WRONG_GUESSES:
     
     print("You lost! The word was:", secret_word)
